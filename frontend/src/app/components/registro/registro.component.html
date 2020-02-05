@@ -1,0 +1,18 @@
+<div class="contenerdorRegistro">
+    <div class="textoExplicativo">
+        <h2>Titulo de muestra</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, excepturi! Ut est, quod debitis quidem sed recusandae veritatis! </p>
+    </div>
+   <div class="registro">
+    <form [formGroup]="formregistro" (submit)="submit()" class="formRegistro">
+        Registro <br>
+         Nombre: <input type="text" formControlName="nuevoNombre">
+         Apellidos: <input type="text" formControlName="nuevoApellidos">
+         Usuario: <input type="text" formControlName="nuevoUsuario">
+         Contraseña: <input type="password" formControlName="nuevaPass">
+         Repite la contraseña: <input type="password" formControlName="compruebaPass">           
+                     <button type="submit">Enviar</button>
+     </form>
+   </div>
+    
+</div>

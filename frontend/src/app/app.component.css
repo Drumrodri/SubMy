@@ -1,25 +1,27 @@
 .plantilladeinicio{
-width: 100vw;
-height: 100vh;
-display: grid;
-grid-template-rows: 2fr 9fr 1fr ;
-grid-template-columns: 12fr;
-grid-template-areas: "cabecera"
-                     "cuerpo"
-                     "pie";
-}
-
-.cabecera{
-    grid-area: cabecera;
-    background-color: aquamarine;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2fr 9fr 1fr ;
+    grid-template-columns: 12fr;
+    grid-template-areas: "cabecera"
+                         "cuerpo"
+                         "pie";
     }
     
-    .cuerpo{
-    grid-area: cuerpo;
-    
-    }
-    
-    .pie{
-    grid-area: pie;
-    background-color: lawngreen;
-    }
+        .cabecera{
+        grid-area: cabecera;
+        background-color: aquamarine;
+        }
+        
+        .cuerpo{
+        grid-area: cuerpo;
+        
+        }
+        
+        .pie{
+        grid-area: pie;
+        background-color: lawngreen;
+        display: flex;
+        flex-direction: row;
+        }

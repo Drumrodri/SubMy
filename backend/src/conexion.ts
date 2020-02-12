@@ -3,7 +3,7 @@ export default {
         host: "localhost",
         user: "root",
         password: "",
-        database: "submy",
+        database: "submydb",
         port: 3306
     }
 }

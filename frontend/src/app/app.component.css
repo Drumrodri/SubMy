@@ -2,7 +2,7 @@
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 2fr 9fr 1fr;
+    grid-template-rows: 1fr 10fr 1fr;
     grid-template-columns: 12fr;
     grid-template-areas: "cabecera" "cuerpo" "pie";
 }
@@ -21,6 +21,5 @@
 .pie {
     grid-area: pie;
     background-color: lawngreen;
-    display: flex;
-    flex-direction: row;
+   
 }

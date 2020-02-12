@@ -21,8 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginComponent,
     RegistroComponent,
     ListaSuscripcionesComponent,
-    FooterComponent,
-
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ListaSuscripcionesComponent } from './components/lista-suscripciones/lista-suscripciones.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { RegistroComponent } from './components/registro/registro.component';
     HeaderComponent,
     LoginComponent,
     RegistroComponent,
+    ListaSuscripcionesComponent,
   
   ],
   imports: [

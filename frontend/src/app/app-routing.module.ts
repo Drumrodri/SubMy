@@ -15,12 +15,17 @@ const routes: Routes = [
   },
   {
     path: 'inicio',
-    component: RegistroComponent // revisar porque esto es lo que cargue por defecto en el inicio, registro?
+    component: RegistroComponent 
   },
   {
     path: 'suscripciones',
-    component: ListaSuscripcionesComponent // revisar porque esto es lo que cargue por defecto en el inicio, registro?
-  }
+    component: ListaSuscripcionesComponent 
+  },
+  {
+    path: 'login',
+    component: LoginComponent 
+  },
+
 ]; // SEGUIR AQUÍ
 
 @NgModule({

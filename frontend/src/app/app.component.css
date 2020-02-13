@@ -1,6 +1,7 @@
 .plantillainicio {
     width: 100vw;
     height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
     display: grid;
     grid-template-rows: 1fr 10fr 1fr;
     grid-template-columns: 12fr;
@@ -9,17 +10,16 @@
 
 .cabecera {
     grid-area: cabecera;
-    background-color: aquamarine;
+    background-color: darkgray;
 }
 
 .cuerpo {
     grid-area: cuerpo;
-    background-color: coral;
     display: grid;
 }
 
 .pie {
     grid-area: pie;
-    background-color: lawngreen;
+    background-color: lightgray;
    
 }

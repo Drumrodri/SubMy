@@ -19,7 +19,8 @@ class SuscripcionController {
     }
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let suscripciones = yield database_1.default.query('SELECT * FROM suscripcion', [req.body]);
+            let suscripciones = yield database_1.default.query('SELECT suscripcion.id,`fechaAlta`,`precio`,`expira`,`prueba`,`idServicio`,' +
+                '`usuario_id`,`periodo`,`estado`,`nombre`,`categoria` FROM suscripcion, servicio WHERE suscripcion.idServicio = servicio.id', [req.body]);
             res.json(suscripciones);
         });
     }

@@ -1,9 +1,13 @@
-<p>Componente suscripciones</p>
+<h2>Componente suscripciones</h2>
 <div *ngFor="let susc of suscripciones" class="listaSuscripciones">
-    <div class="suscripcion">
-        Ejemplo
-        <p>{{susc.precio}}</p>
-        <p>{{susc.periodo}}</p>
-        <p>{{susc.estado}}</p>
+    <div class="suscripcion" class="{{ susc.categoria }}">
+        <h3>{{susc.nombre}}</h3>
+        <p>Fecha de alta: {{susc.fechaAlta}}</p>
+        <p>Precio: {{susc.precio}}</p>
+        <p>Periodo: {{susc.periodo}}</p>
+        <p>Estado: {{susc.estado}}</p>
+        <div class="barra">
+            <div class="barraCarga"></div>
+        </div>
     </div>
 </div>

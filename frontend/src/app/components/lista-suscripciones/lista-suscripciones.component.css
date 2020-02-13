@@ -1,0 +1,21 @@
+.listaSuscripciones {
+    display: flex;
+    flex-direction: column;
+}
+
+.suscripcion {
+    display: flex;
+    flex-direction: column;
+}
+
+.barra {
+    border: 1px solid black;
+    height: 10px;
+    width: 100%;
+}
+
+.barraCarga {
+    background-color: red;
+    height: 100%;
+    width: 100%;
+}

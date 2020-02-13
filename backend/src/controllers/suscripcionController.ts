@@ -7,7 +7,8 @@ class SuscripcionController {
     }
 
     public async get(req: Request, res: Response) {
-        let suscripciones = await pool.query('SELECT * FROM suscripcion', [req.body]);
+        let suscripciones = await pool.query('SELECT suscripcion.id,`fechaAlta`,`precio`,`expira`,`prueba`,`idServicio`,'+
+        '`usuario_id`,`periodo`,`estado`,`nombre`,`categoria` FROM suscripcion, servicio WHERE suscripcion.idServicio = servicio.id', [req.body]);
         res.json(suscripciones);
     }
 }

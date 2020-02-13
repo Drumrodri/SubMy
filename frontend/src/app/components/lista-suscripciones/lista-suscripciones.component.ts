@@ -17,12 +17,15 @@ export class ListaSuscripcionesComponent implements OnInit {
     this.servicioSuscripciones.getSuscripciones().subscribe(
       res => {
         this.suscripciones = res;
+        this.prueba();
       },
       err => {
         console.log(err);
       }
-
-    );
+    ); 
   }
 
+  prueba() {
+    //$('.barraCarga')
+  }
 }

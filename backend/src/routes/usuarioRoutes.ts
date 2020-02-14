@@ -8,9 +8,10 @@ class UsuarioRoutes {
         this.config();
     }
 
-    config() {
+    config():void {
         this.router.get("/usuarios", usuarioController.index);
         this.router.get("/usuarios/:id", usuarioController.get);
+        this.router.post("/login", usuarioController.readlogin);
     }
 }
 const usuarioRoutes = new UsuarioRoutes();

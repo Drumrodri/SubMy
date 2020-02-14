@@ -10,6 +10,7 @@ class UsuarioRoutes {
     config() {
         this.router.get("/usuarios", usuarioController_1.usuarioController.index);
         this.router.get("/usuarios/:id", usuarioController_1.usuarioController.get);
+        this.router.post("/login", usuarioController_1.usuarioController.readlogin);
     }
 }
 const usuarioRoutes = new UsuarioRoutes();

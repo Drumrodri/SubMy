@@ -13,6 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const SECRET_KEY = 'laSecretacionDelLogin';
 class UsuarioController {
     index(req, res) {
         res.json({ mensaje: "Estás en usuarios" });
@@ -21,6 +24,25 @@ class UsuarioController {
         return __awaiter(this, void 0, void 0, function* () {
             let usuario = yield database_1.default.query("SELECT * FROM usuario WHERE id = ?", [req.params.id]);
             res.json(usuario);
+        });
+    }
+    readlogin(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const copiaUsuario = {
+                usuario: req.body.usuario,
+                pass: req.body.pass
+            };
+            const usuarios = yield database_1.default.query('SELECT * FROM usuario WHERE email=? AND password=?', [req.body.usuario, req.body.pass]);
+            console.log(usuarios.length);
+            if (usuarios.length == 0) {
+                res.json({ message: 'error al logear' });
+            }
+            else {
+                const expiresIn = 24 * 60 * 60;
+                const accessToken = jwt.sign({ id: copiaUsuario.usuario }, SECRET_KEY, { expiresIn: expiresIn });
+                console.log(accessToken);
+                res.json(accessToken); //lo que enviamos en el response                              
+            }
         });
     }
 }

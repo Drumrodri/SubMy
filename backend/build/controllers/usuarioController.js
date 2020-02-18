@@ -20,6 +20,17 @@ class UsuarioController {
     index(req, res) {
         res.json({ mensaje: "Estás en usuarios" });
     }
+    // crear los metodos crud
+    create(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body.password);
+            // aqui es donde se va a codicar la contraseña se va a modificar la const Usuario
+            const Usuario = req.body;
+            const passUsu = Usuario.password; // pruebas
+            yield database_1.default.query('INSERT INTO usuario SET ?', [Usuario]);
+            res.json({ 'menssage': 'se ha insertado correctamente el usuairo' });
+        });
+    }
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let usuario = yield database_1.default.query("SELECT * FROM usuario WHERE id = ?", [req.params.id]);

@@ -6,11 +6,13 @@
    <div class="registro">
     <form [formGroup]="formregistro" (submit)="submit()" class="formRegistro">
         Registro <br>
-         Nombre: <input type="text" formControlName="nuevoNombre">
-         Apellidos: <input type="text" formControlName="nuevoApellidos">
-         Usuario: <input type="text" formControlName="nuevoUsuario">
-         Contraseña: <input type="password" formControlName="nuevaPass">
-         Repite la contraseña: <input type="password" formControlName="compruebaPass">           
+         Nick: <input type="text" formControlName="nick">
+         Nombre: <input type="text" formControlName="nombre">
+         Apellidos: <input type="text" formControlName="apellidos">
+         Imagen: <input type="file" formControlName="imagen">
+         Email: <input type="text" formControlName="email">
+         Contraseña: <input type="password" formControlName="password">
+        <!--Repite la contraseña: <input type="password" formControlName="compruebaPassword">-->            
                      <button type="submit">Enviar</button>
      </form>
    </div>

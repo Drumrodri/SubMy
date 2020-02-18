@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ServicioLoginService} from 'src/app/services/servicio-login.service';
+import { ModeloUsuarioService} from 'src/app/services/servicio-usuario.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Usuario } from 'src/app/modelo/Usuario';
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   public misUsuarios: Usuario;
 
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private servicioLogin: ServicioLoginService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private servicioLogin: ModeloUsuarioService) {
 
     this.formLogin = formBuilder.group({
       usuario:[''],

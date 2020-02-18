@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent} from './components/login/login.component';
 import {RegistroComponent} from './components/registro/registro.component';
 import { ListaSuscripcionesComponent } from './components/lista-suscripciones/lista-suscripciones.component';
+import { GLoginUserGuard } from './services/g-login-user.guard'; // para cuando tengamos que poner parte privada
 
 const routes: Routes = [
   {

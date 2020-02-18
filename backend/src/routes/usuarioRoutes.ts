@@ -11,6 +11,7 @@ class UsuarioRoutes {
     config():void {
         this.router.get("/usuarios", usuarioController.index);
         this.router.get("/usuarios/:id", usuarioController.get);
+        this.router.post('/crearUser', usuarioController.create);
         this.router.post("/login", usuarioController.readlogin);
     }
 }

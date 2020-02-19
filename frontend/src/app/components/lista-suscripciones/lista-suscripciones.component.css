@@ -1,11 +1,13 @@
 .listaSuscripciones {
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
 .suscripcion {
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
 .barra {
@@ -15,7 +17,6 @@
 }
 
 .barraCarga {
-    background-color: red;
+    background-color: rgb(27, 80, 255);
     height: 100%;
-    width: 100%;
 }

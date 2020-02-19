@@ -1,4 +1,4 @@
-<h2>Componente suscripciones</h2>
+<h2>Tus suscripciones</h2>
 <div *ngFor="let susc of suscripciones" class="listaSuscripciones">
     <div class="suscripcion" class="{{ susc.categoria }}">
         <h3>{{susc.nombre}}</h3>
@@ -7,7 +7,7 @@
         <p>Periodo: {{susc.periodo}}</p>
         <p>Estado: {{susc.estado}}</p>
         <div class="barra">
-            <div class="barraCarga"></div>
+            <div class="barraCarga" id="{{ susc.id }}"></div>
         </div>
     </div>
 </div>

@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const bcryptdos = require('bcrypt');
 const SECRET_KEY = 'laSecretacionDelLogin';
 class UsuarioController {
     index(req, res) {
@@ -25,9 +26,11 @@ class UsuarioController {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body.password);
             // aqui es donde se va a codicar la contraseña se va a modificar la const Usuario
-            const Usuario = req.body;
-            const passUsu = Usuario.password; // pruebas
-            yield database_1.default.query('INSERT INTO usuario SET ?', [Usuario]);
+            const Usuario = req.body; // objeto Usuario
+            const passUsu = bcrypt.hashSync(Usuario.password); // contraseña
+            console.log(passUsu); //comprobador
+            Usuario.password = passUsu;
+            database_1.default.query('INSERT INTO usuario SET ?', [Usuario]);
             res.json({ 'menssage': 'se ha insertado correctamente el usuairo' });
         });
     }
@@ -43,16 +46,23 @@ class UsuarioController {
                 usuario: req.body.usuario,
                 pass: req.body.pass
             };
-            const usuarios = yield database_1.default.query('SELECT * FROM usuario WHERE email=? AND password=?', [req.body.usuario, req.body.pass]);
-            console.log(usuarios.length);
+            const usuarios = yield database_1.default.query('SELECT * FROM usuario WHERE email=? ', [req.body.usuario]);
+            console.log(usuarios[0].password); // comprobador
             if (usuarios.length == 0) {
                 res.json({ message: 'error al logear' });
             }
             else {
-                const expiresIn = 24 * 60 * 60;
-                const accessToken = jwt.sign({ id: copiaUsuario.usuario }, SECRET_KEY, { expiresIn: expiresIn });
-                console.log(accessToken);
-                res.json(accessToken); //lo que enviamos en el response                              
+                // comparar contraseñas
+                if (bcrypt.compareSync(copiaUsuario.pass, usuarios[0].password)) {
+                    const expiresIn = 24 * 60 * 60;
+                    const accessToken = jwt.sign({ id: copiaUsuario.usuario }, SECRET_KEY, { expiresIn: expiresIn });
+                    console.log("token de acceso");
+                    console.log(accessToken);
+                    res.json(accessToken); //lo que enviamos el token en el response 
+                }
+                else {
+                    console.log("error al loggearse");
+                }
             }
         });
     }

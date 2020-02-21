@@ -13,16 +13,13 @@ export class ListaSuscripcionesComponent implements OnInit {
   public suscripciones: Suscripcion;
   public now = new Date();
 
-  constructor(private servicioSuscripciones: ServicioSuscripcionesService) {
-    $(document).ready(() => {
-      this.recorreSuscripciones();
-    });
-  }
+  constructor(private servicioSuscripciones: ServicioSuscripcionesService) { }
 
   ngOnInit() {
     this.servicioSuscripciones.getSuscripciones().subscribe(
       res => {
         this.suscripciones = res;
+        console.log(res);
       },
       err => {
         console.log(err);
@@ -30,26 +27,19 @@ export class ListaSuscripcionesComponent implements OnInit {
     );
   }
 
-  // Recorre las suscripciones y pasa FechaExpira a calcularDias()
-  recorreSuscripciones() {
-    for (let i = 0; i < Object.keys(this.suscripciones).length; i++) {
-      console.log(this.suscripciones[i]);
-      this.calcularDias(this.suscripciones[i].expira);
-    }
-  }
-
-  // Calcula los días entre la fecha actual y FechaExpira
+  // Calcula el porcentaje de la barra en función de los días que quedan hasta la fechaExpiración
   calcularDias(fecha) {
-    const fechaSusc = new Date(fecha); // Hay que pasar el parámetro a Date
-    const dias = (fechaSusc.getTime() - this.now.getTime()) / (1000 * 3600 * 24);
-    console.log(Math.round(dias));
-    this.calcularBarra(dias);
-  }
+    console.log(fecha);
+    const fechaExp = new Date(fecha);
+    const diasRestantes = (fechaExp.getTime() - this.now.getTime()) / (1000 * 3600 * 24);
+    console.log('Días restantes: ' + Math.round(diasRestantes));
 
-  calcularBarra(dias) {
-    const hoy = this.now.getDate();
-    const porcentaje = (hoy * 100) / dias;
-    $('#1').width(porcentaje + '%');
+    // Calcula el procentaje, inicialmente saca un porcentaje revertido, que se calcula en la línea siguiente
+    const porcentajeRevertido = Math.round((diasRestantes * 100) / 30);
+    const porcentaje = 100 - porcentajeRevertido;
+
+    console.log('Porcentaje: ' + porcentaje);
+    return porcentaje;
   }
 
 }

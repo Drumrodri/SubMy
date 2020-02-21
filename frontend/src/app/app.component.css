@@ -10,7 +10,10 @@
 
 .cabecera {
     grid-area: cabecera;
-    background-color: darkgray;
+    text-align: center;
+    color: white;
+    background-color: purple;
+    box-shadow: 5px 5px 5px rgb(190, 190, 190);
 }
 
 .cuerpo {
@@ -20,6 +23,6 @@
 
 .pie {
     grid-area: pie;
-    background-color: lightgray;
+    background-color: purple;
    
 }

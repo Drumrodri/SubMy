@@ -21,12 +21,12 @@ export class RegistroComponent implements OnInit {
 
     // variables para los datos del formulario, se tiene que llamar igual que los formcontroller name
     this.formregistro = formBuilder.group({
-      nick: ['', [Validators.required]], // falta validador de espacios
+      nick: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+$/)]], 
       nombre: ['', [Validators.required]],
       apellidos: ['', [Validators.required]],
       imagen: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+$/)]],
      // repitepassword: ['', [Validators.required]] // revisar
 
     });
@@ -73,4 +73,7 @@ export class RegistroComponent implements OnInit {
     return this.formregistro.get('email');
   }
 
+  get password(){
+    return this.formregistro.get('password');
+  }
 }

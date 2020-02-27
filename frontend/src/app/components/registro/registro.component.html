@@ -13,7 +13,7 @@
                 el nick del usuario es obligatorio
             </div>
             <div *ngIf="nick.errors.pattern">
-                el nick no debe contener espacios o ! ?
+                el nick no debe contener espacios, acentos o simbolos @ ! ? ` Ç
             </div>
         </div>
          Nombre: <input type="text" formControlName="nombre">
@@ -47,7 +47,7 @@
                 la contraña es obligatoria
             </div>
             <div *ngIf="password.errors.pattern">
-               la contraseña debe contener espacios o ! ?
+               la contraseña no debe contener espacios, acentos o simbolos @ ! ? ` Ç
             </div>
         </div>
         <!--Repite la contraseña: <input type="password" formControlName="compruebaPassword">-->            

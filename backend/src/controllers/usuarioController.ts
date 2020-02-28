@@ -42,7 +42,7 @@ class UsuarioController {
             // comparar contraseñas
             if (bcrypt.compareSync(copiaUsuario.pass, usuarios[0].password)) {
                 const expiresIn = 24 * 60 * 60;
-                const accessToken = jwt.sign({ id: copiaUsuario.usuario },
+                const accessToken = jwt.sign({ id: usuarios[0].usuario },
                     SECRET_KEY,
                     { expiresIn: expiresIn });
 

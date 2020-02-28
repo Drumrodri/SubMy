@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ModeloUsuarioService} from 'src/app/services/servicio-usuario.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/modelo/Usuario';
 import { Router } from '@angular/router';
 
@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private servicioLogin: ModeloUsuarioService) {
 
     this.formLogin = formBuilder.group({
-      usuario:[''],
-      pass: ['']
+      usuario:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
+      pass: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+$/)]]
 
     });
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
       res => {
         localStorage.setItem('token', res); // escribe el toquen en el localStorage
-        // falta hacer lo de parte privada
+        this.router.navigate(['suscripciones']);
       },
       err => {
         console.log(err);
@@ -44,5 +44,14 @@ export class LoginComponent implements OnInit {
     );
 
   }
+
+  // validacion
+   get usuario(){
+     return this.formLogin.get('usuario');
+   }
+
+   get pass(){
+     return this.formLogin.get('pass');
+   }
 
 }

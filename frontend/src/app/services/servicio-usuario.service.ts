@@ -22,5 +22,18 @@ export class ModeloUsuarioService {
     return this.http.post('http://localhost:3000/login', usuario);
   }
 
+  getToken(){
+    return localStorage.getItem('token');
+  }
+ 
+  logIn(){
+    // !! es como un doble if, si hay item me devuelves true y si no false
+    return !!localStorage.getItem('token');
+  }
+  
+  logOut(){
+    localStorage.removeItem('token');
+  }
+
 
 }

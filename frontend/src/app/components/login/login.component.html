@@ -1,7 +1,23 @@
 <div class="fichalogin">
     <form [formGroup]="formLogin" (submit)="submit()">
         Usuario: <input type="text" formControlName="usuario">
+        <div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)"> 
+            <div *ngIf="usuario.errors.required">
+                el correo del usuario es necesario
+            </div>
+            <div *ngIf="usuario.errors.pattern">
+               el correo no tiene el formato adecuado
+            </div>
+        </div>
         Contraseña: <input type="password" formControlName="pass">
+        <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"> 
+            <div *ngIf="pass.errors.required">
+                rellena este campo
+            </div>
+            <div *ngIf="pass.errors.pattern">
+                la contraseña no debe contener espacios, acentos o simbolos @ ! ? ` Ç
+            </div>
+        </div>
                     <button type="submit">Enviar</button>
     </form>
 </div>

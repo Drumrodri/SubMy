@@ -4,6 +4,7 @@ import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import suscripcionRoutes from './routes/suscripcionRoutes';
 import usuariosRoutes from './routes/usuarioRoutes';
+import servicioRoutes from './routes/servicioRoutes';
 
 /* Creamos la clase server para el servidor de datos */
 class Server {
@@ -27,6 +28,7 @@ class Server {
         this.app.use(indexRoutes);
         this.app.use(suscripcionRoutes);
         this.app.use(usuariosRoutes);
+        this.app.use(servicioRoutes);
     }
 
     start(): void {

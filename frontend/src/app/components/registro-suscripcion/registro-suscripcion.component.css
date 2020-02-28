@@ -1,0 +1,4 @@
+.formSuscripcion {
+    display: flex;
+    flex-direction: column;
+}

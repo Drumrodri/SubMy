@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const suscripcionRoutes_1 = __importDefault(require("./routes/suscripcionRoutes"));
 const usuarioRoutes_1 = __importDefault(require("./routes/usuarioRoutes"));
+const servicioRoutes_1 = __importDefault(require("./routes/servicioRoutes"));
 /* Creamos la clase server para el servidor de datos */
 class Server {
     constructor() {
@@ -26,6 +27,7 @@ class Server {
         this.app.use(indexRoutes_1.default);
         this.app.use(suscripcionRoutes_1.default);
         this.app.use(usuarioRoutes_1.default);
+        this.app.use(servicioRoutes_1.default);
     }
     start() {
         //crear escuchador

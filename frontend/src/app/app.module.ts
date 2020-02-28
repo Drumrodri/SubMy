@@ -14,6 +14,7 @@ import { ListaSuscripcionesComponent } from './components/lista-suscripciones/li
 import { FooterComponent } from './components/footer/footer.component';
 import { MatProgressBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegistroSuscripcionComponent } from './components/registro-suscripcion/registro-suscripcion.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     RegistroComponent,
     ListaSuscripcionesComponent,
-    FooterComponent
+    FooterComponent,
+    RegistroSuscripcionComponent
   ],
   imports: [
     BrowserModule,

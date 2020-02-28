@@ -7,6 +7,7 @@ import { LoginComponent} from './components/login/login.component';
 import {RegistroComponent} from './components/registro/registro.component';
 import { ListaSuscripcionesComponent } from './components/lista-suscripciones/lista-suscripciones.component';
 import { GLoginUserGuard } from './services/g-login-user.guard'; // para cuando tengamos que poner parte privada
+import { RegistroSuscripcionComponent } from './components/registro-suscripcion/registro-suscripcion.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent 
   },
-
+  {
+    path: 'crearSuscripcion',
+    component: RegistroSuscripcionComponent
+  },
 ]; // SEGUIR AQUÍ
 
 @NgModule({

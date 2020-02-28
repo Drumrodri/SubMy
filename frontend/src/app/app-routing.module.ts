@@ -21,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'suscripciones',
-    component: ListaSuscripcionesComponent 
+    component: ListaSuscripcionesComponent,
+    canActivate:[GLoginUserGuard] 
   },
   {
     path: 'login',

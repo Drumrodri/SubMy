@@ -54,14 +54,11 @@ class UsuarioController {
             else {
                 // comparar contraseñas
                 if (bcrypt.compareSync(copiaUsuario.pass, usuarios[0].password)) {
-                    const usuarioId = usuarios[0].id;
                     const expiresIn = 24 * 60 * 60;
-                    const accessToken = jwt.sign({ id: usuarios[0].usuario }, SECRET_KEY, { expiresIn: expiresIn });
-                    console.log("id usuario");
-                    console.log(usuarioId);
+                    const accessToken = jwt.sign({ id: usuarios[0].id }, SECRET_KEY, { expiresIn: expiresIn });
                     console.log("token de acceso");
                     console.log(accessToken);
-                    res.json({ user: usuarioId, token: accessToken }); //lo que enviamos el token en el response 
+                    res.json({ token: accessToken }); //lo que enviamos el token en el response 
                 }
                 else {
                     console.log("error al loggearse");

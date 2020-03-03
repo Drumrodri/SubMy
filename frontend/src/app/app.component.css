@@ -18,7 +18,6 @@
 
 .cuerpo {
     grid-area: cuerpo;
-    display: grid;
 }
 
 .pie {

@@ -1,9 +1,15 @@
-.contenerdorRegistro{
+.contenedorRegistro{
     display: grid;
     grid-template-columns: 6fr 6fr;
     grid-template-rows: 12fr;
     grid-template-areas: "texto registro";
     justify-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: url('../../../../public/img/inicioimg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .textoExplicativo{
@@ -22,7 +28,26 @@
 .formRegistro{
     display: flex;
     flex-direction: column;
-
+    width: 80%;
+    height: 80%;
+    padding: 15px;
+    background-color: rgb(68, 68, 68);
+    border-radius: 10px;
 }
 
-
+@media only screen and (max-width: 700px) {
+    .contenedorRegistro{
+        display: grid;
+        grid-template-columns: 12fr;
+        grid-template-rows: 6fr 6fr;
+        grid-template-areas: "texto"
+                             "registro";
+        justify-items: center;
+        height: 100%;
+        width: 100%;
+        background-image: url('../../../../public/img/inicioimg.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

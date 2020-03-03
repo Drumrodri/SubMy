@@ -30,7 +30,8 @@ const routes: Routes = [
   },
   {
     path: 'crearSuscripcion',
-    component: RegistroSuscripcionComponent
+    component: RegistroSuscripcionComponent,
+    canActivate:[GLoginUserGuard]
   },
 ]; // SEGUIR AQUÍ
 

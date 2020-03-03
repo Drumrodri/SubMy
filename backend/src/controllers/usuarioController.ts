@@ -51,10 +51,15 @@ class UsuarioController {
                 console.log("token de acceso");
                 console.log(accessToken);
                 res.json({token: accessToken}); //lo que enviamos el token en el response 
+
                 
             } else {
                 console.log("error al loggearse");
             }
+            
+            
+
+            
 
 
         }

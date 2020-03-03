@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
+    if(localStorage.getItem('tokenSubmy')){
+      this.router.navigate(['suscripciones']);
+    }
   }
 
   submit(){
@@ -34,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.servicioLogin.getLogin(this.formLogin.value).subscribe(
 
       res => {
-        localStorage.setItem('token', res.token); // escribe el toquen en el localStorage
+        localStorage.setItem('tokenSubmy', res.token); // escribe el toquen en el localStorage
         this.router.navigate(['suscripciones']);
       },
       err => {

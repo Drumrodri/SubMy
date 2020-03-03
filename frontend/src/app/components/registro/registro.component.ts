@@ -34,6 +34,9 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(localStorage.getItem('tokenSubmy')){
+      this.router.navigate(['suscripciones']);
+    }
 
   }
 

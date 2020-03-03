@@ -23,16 +23,16 @@ export class ModeloUsuarioService {
   }
 
   getToken(){
-    return localStorage.getItem('token');
+    return localStorage.getItem('tokenSubmy');
   }
  
   logIn(){
     // !! es como un doble if, si hay item me devuelves true y si no false
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('tokenSubmy');
   }
   
   logOut(){
-    localStorage.removeItem('token');
+    localStorage.removeItem('tokenSubmy');
   }
 
 

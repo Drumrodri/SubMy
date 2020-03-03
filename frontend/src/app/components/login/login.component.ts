@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
     this.servicioLogin.getLogin(this.formLogin.value).subscribe(
 
       res => {
-        localStorage.setItem('token', res); // escribe el toquen en el localStorage
+        localStorage.setItem('token', res.token); // escribe el toquen en el localStorage
+        localStorage.setItem('id' , res.user);
         this.router.navigate(['suscripciones']);
       },
       err => {

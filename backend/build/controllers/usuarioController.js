@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
+const decode = require('jwt-decode');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const bcryptdos = require('bcrypt');
@@ -59,6 +60,9 @@ class UsuarioController {
                     console.log("token de acceso");
                     console.log(accessToken);
                     res.json({ token: accessToken }); //lo que enviamos el token en el response 
+                    console.log('token decoficado');
+                    var tokenDecode = decode(accessToken);
+                    console.log(tokenDecode.id);
                 }
                 else {
                     console.log("error al loggearse");

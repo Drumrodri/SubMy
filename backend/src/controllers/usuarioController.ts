@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import pool from '../database';
+const decode = require ('jwt-decode');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const bcryptdos = require('bcrypt');
@@ -51,6 +52,10 @@ class UsuarioController {
                 console.log("token de acceso");
                 console.log(accessToken);
                 res.json({token: accessToken}); //lo que enviamos el token en el response 
+
+                console.log('token decoficado');
+                var tokenDecode = decode(accessToken);
+                console.log(tokenDecode.id);
 
                 
             } else {

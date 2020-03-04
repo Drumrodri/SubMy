@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicioSuscripcionesService } from 'src/app/services/servicio-suscripciones.service';
 import { Suscripcion } from 'src/app/modelo/Suscripcion';
 import * as $ from 'jquery';
+const decode = require ('jwt-decode');
 
 @Component({
   selector: 'app-lista-suscripciones',
@@ -20,6 +21,12 @@ export class ListaSuscripcionesComponent implements OnInit {
       res => {
         this.suscripciones = res;
         console.log(res);
+
+        // prueba decodificar token
+        console.log('token decoficado');
+        var token = localStorage.getItem('tokenSubmy');
+        var tokenDecode = decode(token);
+        console.log(tokenDecode.id);
       },
       err => {
         console.log(err);

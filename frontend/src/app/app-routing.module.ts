@@ -8,6 +8,7 @@ import {RegistroComponent} from './components/registro/registro.component';
 import { ListaSuscripcionesComponent } from './components/lista-suscripciones/lista-suscripciones.component';
 import { GLoginUserGuard } from './services/g-login-user.guard'; // para cuando tengamos que poner parte privada
 import { RegistroSuscripcionComponent } from './components/registro-suscripcion/registro-suscripcion.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
     component: RegistroSuscripcionComponent,
     canActivate:[GLoginUserGuard]
   },
+  {
+    path: 'perfil',
+    component: PerfilComponent,
+    canActivate:[GLoginUserGuard]
+  }
 ]; // SEGUIR AQUÍ
 
 @NgModule({

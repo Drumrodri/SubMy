@@ -22,6 +22,10 @@ export class ModeloUsuarioService {
     return this.http.post('http://localhost:3000/login', usuario);
   }
 
+  getUsuario() {
+    
+  }
+
   getToken(){
     return localStorage.getItem('tokenSubmy');
   }

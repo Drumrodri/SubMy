@@ -58,13 +58,10 @@
                     La contraseña no debe contener espacios, acentos o símbolos @ ! ? ` Ç.
                     </div>
                 </div>
-                <br>
-
                 <!--Repite la contraseña: <input type="password" formControlName="compruebaPassword">--> 
+                
+                Imagen: <input type="file" formControlName="imagen" class="inputImagen">
 
-                Imagen: <input type="file" formControlName="imagen">
-
-                <br>        
                 <button class="btn" type="submit" [disabled]="!formregistro.valid">Enviar</button>
             </form>
         </div>

@@ -60,7 +60,7 @@
                 </div>
                 <!--Repite la contraseña: <input type="password" formControlName="compruebaPassword">--> 
                 
-                Imagen: <input type="file" formControlName="imagen" class="inputImagen">
+                Imagen: <input type="file" formControlName="imagen" class="inputImagen" (change)=" OperadorImgaen($event)">
 
                 <button class="btn" type="submit" [disabled]="!formregistro.valid">Enviar</button>
             </form>

@@ -16,7 +16,8 @@ export class RegistroComponent implements OnInit {
 
   public formregistro: FormGroup;
   public usuarios: Usuario;
-  
+  private imagen: any;
+
   constructor(private formBuilder: FormBuilder, private mimodeloUsuario: ModeloUsuarioService, private router: Router) {
 
     // variables para los datos del formulario, se tiene que llamar igual que los formcontroller name
@@ -38,6 +39,11 @@ export class RegistroComponent implements OnInit {
       this.router.navigate(['suscripciones']);
     }
 
+  }
+
+  OperadorImgaen(event: any): void{
+    this.imagen = event.target.files[0];
+    console.log('imagen: ', this.imagen);
   }
 
   submit() {

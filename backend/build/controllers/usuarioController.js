@@ -35,6 +35,10 @@ class UsuarioController {
             res.json({ 'menssage': 'se ha insertado correctamente el usuairo' });
         });
     }
+    // update de imagen
+    /* private updateImagen(usuario: Usuario , imagen: FileI){
+ 
+     }*/
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let usuario = yield database_1.default.query("SELECT * FROM usuario WHERE id = ?", [req.params.id]);

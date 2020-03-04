@@ -23,6 +23,12 @@ class UsuarioController {
         res.json({ 'menssage': 'se ha insertado correctamente el usuairo' });
 
     }
+    
+    // update de imagen
+   /* private updateImagen(usuario: Usuario , imagen: FileI){
+
+    }*/
+
 
     public async get(req: Request, res: Response) {
         let usuario = await pool.query("SELECT * FROM usuario WHERE id = ?", [req.params.id]);

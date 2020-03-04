@@ -10,7 +10,7 @@ export class ServicioSuscripcionesService {
 
   constructor(private http: HttpClient) { }
 
-  getSuscripciones(): Observable<any> {
-    return this.http.get('http://localhost:3000/suscripciones');
+  getSuscripciones(idUser: string): Observable<any> {
+    return this.http.get('http://localhost:3000/suscripciones/'+idUser);
   }
 }

@@ -25,6 +25,10 @@ export class ModeloUsuarioService {
   getToken(){
     return localStorage.getItem('tokenSubmy');
   }
+
+  getUsuario(idUser: string): Observable<any> {
+    return this.http.get('http://localhost:3000/usuarios/'+idUser);
+  }
  
   logIn(){
     // !! es como un doble if, si hay item me devuelves true y si no false
@@ -34,6 +38,5 @@ export class ModeloUsuarioService {
   logOut(){
     localStorage.removeItem('tokenSubmy');
   }
-
 
 }

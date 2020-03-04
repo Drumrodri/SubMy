@@ -7,8 +7,10 @@ class SuscripcionController {
     }
 
     public async get(req: Request, res: Response) {
+        console.log("Id usuario desde controller susc: ")
+        console.log(req.params.idUser);
         let suscripciones = await pool.query('SELECT suscripcion.id,`fechaAlta`,`precio`,`expira`,`prueba`,`idServicio`,'+
-        '`usuario_id`,`periodo`,`estado`,`nombre`,`categoria` FROM suscripcion, servicio WHERE suscripcion.idServicio = servicio.id', [req.body]);
+        '`usuario_id`,`periodo`,`estado`,`nombre`,`categoria` FROM suscripcion, servicio WHERE suscripcion.idServicio = servicio.id AND usuario_id=?', [req.params.idUser]);
         res.json(suscripciones);
     }
 }

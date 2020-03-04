@@ -8,7 +8,7 @@ class SuscripcionRoutes {
         this.config();
     }
     config() {
-        this.router.get("/suscripciones", suscripcionController_1.suscripcionController.get);
+        this.router.get("/suscripciones/:idUser", suscripcionController_1.suscripcionController.get);
     }
 }
 const suscripcionRoutes = new SuscripcionRoutes();

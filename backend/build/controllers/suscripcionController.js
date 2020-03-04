@@ -19,8 +19,10 @@ class SuscripcionController {
     }
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("Id usuario desde controller susc: ");
+            console.log(req.params.idUser);
             let suscripciones = yield database_1.default.query('SELECT suscripcion.id,`fechaAlta`,`precio`,`expira`,`prueba`,`idServicio`,' +
-                '`usuario_id`,`periodo`,`estado`,`nombre`,`categoria` FROM suscripcion, servicio WHERE suscripcion.idServicio = servicio.id', [req.body]);
+                '`usuario_id`,`periodo`,`estado`,`nombre`,`categoria` FROM suscripcion, servicio WHERE suscripcion.idServicio = servicio.id AND usuario_id=?', [req.params.idUser]);
             res.json(suscripciones);
         });
     }

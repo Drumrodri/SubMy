@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicioServiciosService } from 'src/app/services/servicio-servicios.service';
 import { Servicio } from 'src/app/modelo/Servicio';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-suscripcion',
@@ -10,8 +11,16 @@ import { Servicio } from 'src/app/modelo/Servicio';
 export class RegistroSuscripcionComponent implements OnInit {
 
   public servicios: Servicio;
+  public formCrearSusc: FormGroup;
 
-  constructor(private servicioServicios: ServicioServiciosService) { }
+  constructor(private formBuilder: FormBuilder, private servicioServicios: ServicioServiciosService) { 
+    this.formCrearSusc = this.formBuilder.group({
+      servicio: [''],
+      fechaAlta: [''],
+      periodo: [''],
+      prueba: ['']
+    });
+  }
 
   ngOnInit() {
     this.servicioServicios.getServicios().subscribe(
@@ -23,6 +32,10 @@ export class RegistroSuscripcionComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  submit() {
+    console.log(this.formCrearSusc.value);
   }
 
 }

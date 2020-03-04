@@ -1,19 +1,30 @@
 .listaSuscripciones {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(27, 31, 34);
+}
+.imgFondo {
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 20px;
+    background: url('../../../assets/img/imgFondoSuscripciones.png') no-repeat fixed top;
+    background-size: cover;
 }
 
 .suscripcion {
     display: flex;
     flex-direction: column;
     padding: 18px;
-    margin: 2px;
-    background-color: rgb(250, 250, 250);
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px lightgray;
+    margin: 10px;
+    width: 70%;
+    background-color: rgb(44, 51, 56);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(26, 26, 26);
 }
 
-p {
-    color: rgb(75, 75, 75);
+.titulo {
+    color: white;
+    border-bottom: 5px solid #800080;
 }

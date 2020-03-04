@@ -1,23 +1,26 @@
-<div class="fichalogin">
-    <form [formGroup]="formLogin" (submit)="submit()">
-        Usuario: <input type="text" formControlName="usuario">
-        <div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)"> 
-            <div *ngIf="usuario.errors.required">
-                el correo del usuario es necesario
+<div class="fichaLogin">
+    <div class="imgFondo">
+        <form [formGroup]="formLogin" (submit)="submit()" class="formLogin">
+            <h3 class="titulo">Iniciar sesión</h3>
+            Usuario: <input type="text" formControlName="usuario" class="text-box">
+            <div *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)"> 
+                <div *ngIf="usuario.errors.required">
+                    El email es obligatorio.
+                </div>
+                <div *ngIf="usuario.errors.pattern">
+                    El email no tiene el formato adecuado.
+                </div>
             </div>
-            <div *ngIf="usuario.errors.pattern">
-               el correo no tiene el formato adecuado
+            Contraseña: <input type="password" formControlName="pass" class="text-box">
+            <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"> 
+                <div *ngIf="pass.errors.required">
+                    Este campo es obligatorio.
+                </div>
+                <div *ngIf="pass.errors.pattern">
+                    La contraseña no debe contener espacios, acentos o símbolos @ ! ? ` Ç.
+                </div>
             </div>
-        </div>
-        Contraseña: <input type="password" formControlName="pass">
-        <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"> 
-            <div *ngIf="pass.errors.required">
-                rellena este campo
-            </div>
-            <div *ngIf="pass.errors.pattern">
-                la contraseña no debe contener espacios, acentos o simbolos @ ! ? ` Ç
-            </div>
-        </div>
-                    <button type="submit">Enviar</button>
-    </form>
+            <button type="submit" class="btnSubmit">Enviar</button>
+        </form>
+    </div> 
 </div>

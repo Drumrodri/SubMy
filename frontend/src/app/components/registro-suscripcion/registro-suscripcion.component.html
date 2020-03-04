@@ -1,15 +1,22 @@
-<h2>Crear suscripción</h2>
-<div class="formSuscripcion">
-    Servicio: <select name="servicio" id="">
-        <option *ngFor="let serv of servicios" value="{{ serv.id }}">{{ serv.nombre }}</option>
-    </select>
-    Fecha de alta: <input type="date" name="fechaAlta">
-    Periodo: <select name="periodo" id="">
-        <option value="mensual">Mensual</option>
-        <option value="anual">Anual</option>
-    </select>
-    Prueba gratuita: <select name="prueba" id="">
-        <option value="0">Sí</option>
-        <option value="1">No</option>
-    </select>
+<div class="crearSuscripcion">
+
+    <div class="imgFondo">
+        <h2 class="titulo">Crear suscripción</h2>
+        <div class="formSuscripcion">
+            Servicio: <select name="servicio" id="" class="select-box">
+                <option *ngFor="let serv of servicios" value="{{ serv.id }}">{{ serv.nombre }}</option>
+            </select>
+            Fecha de alta: <input type="date" name="fechaAlta" class="text-box">
+            Periodo: <select name="periodo" id="" class="select-box">
+                <option value="mensual">Mensual</option>
+                <option value="anual">Anual</option>
+            </select>
+            Prueba gratuita: <select name="prueba" id="" class="select-box">
+                <option value="0">Sí</option>
+                <option value="1">No</option>
+            </select>
+            <input type="submit" value="Crear" class="btnSubmit">
+        </div>
+    </div>
+
 </div>

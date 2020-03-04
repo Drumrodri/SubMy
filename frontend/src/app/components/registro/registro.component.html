@@ -1,58 +1,72 @@
 <div class="contenedorRegistro">
-    <div class="textoExplicativo">
-        <h2>SubMy</h2>
-        <p>Todas tus suscripciones, en un solo servicio.</p>
+    <div class="imagenFondo">
+        <div class="textoExplicativo">
+            <h2>SubMy</h2>
+            <p>Todas tus suscripciones, en un solo servicio.</p>
+        </div>
+        <div class="registro">
+            <form [formGroup]="formregistro" (submit)="submit()" class="formRegistro">
+    
+                <h3>Registro</h3> 
+                <br>
+    
+                Nick: <input type="text" formControlName="nick" class="text-box">
+    
+                <div *ngIf="nick.invalid && (nick.dirty || nick.touched)"> 
+                    <div *ngIf="nick.errors.required">
+                        El nick del usuario es obligatorio.
+                    </div>
+                    <div *ngIf="nick.errors.pattern">
+                        El nick no debe contener espacios, acentos o símbolos @ ! ? ` Ç.
+                    </div>
+                </div>
+    
+                Nombre: <input type="text" formControlName="nombre" class="text-box">
+    
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"> 
+                    <div *ngIf="nombre.errors.required">
+                        El nombre del usuario es obligatorio.
+                    </div>
+                </div>
+    
+                Apellidos: <input type="text" formControlName="apellidos" class="text-box">
+    
+                <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)">            
+                    <div *ngIf="apellidos.errors.required">
+                        Al menos un apellido es obligatorio.
+                    </div>
+                </div>
+
+                Email: <input type="text" formControlName="email" class="text-box">
+    
+                <div *ngIf="email.invalid && (email.dirty || email.touched)">             
+                    <div *ngIf="email.errors.required">
+                        El email del usuario es obligatorio.
+                    </div>
+                    <div *ngIf="email.errors.pattern">
+                        El email no cumple con los requisitos.
+                    </div>
+                </div>
+    
+                Contraseña: <input type="password" formControlName="password" class="text-box">
+    
+                <div *ngIf="password.invalid && (password.dirty || password.touched)"> 
+                    <div *ngIf="password.errors.required">
+                        La contraña es obligatoria.
+                    </div>
+                    <div *ngIf="password.errors.pattern">
+                    La contraseña no debe contener espacios, acentos o símbolos @ ! ? ` Ç.
+                    </div>
+                </div>
+                <br>
+
+                <!--Repite la contraseña: <input type="password" formControlName="compruebaPassword">--> 
+
+                Imagen: <input type="file" formControlName="imagen">
+
+                <br>        
+                <button class="btn" type="submit" [disabled]="!formregistro.valid">Enviar</button>
+            </form>
+        </div>
     </div>
-   <div class="registro">
-    <form [formGroup]="formregistro" (submit)="submit()" class="formRegistro">
-        Registro <br>
-       
-         Nick: <input type="text" formControlName="nick">
-         <div *ngIf="nick.invalid && (nick.dirty || nick.touched)"> 
-            <div *ngIf="nick.errors.required">
-                el nick del usuario es obligatorio
-            </div>
-            <div *ngIf="nick.errors.pattern">
-                el nick no debe contener espacios, acentos o simbolos @ ! ? ` Ç
-            </div>
-        </div>
-         Nombre: <input type="text" formControlName="nombre">
-         <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"> 
-            
-            <div *ngIf="nombre.errors.required">
-                el nombre del usuario es obligatorio
-            </div>
-        </div>
-         Apellidos: <input type="text" formControlName="apellidos">
-         <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)"> 
-            
-            <div *ngIf="apellidos.errors.required">
-                al menos un apellido del usuario es obligatorio
-            </div>
-        </div>
-         Imagen: <input type="file" formControlName="imagen">
-         Email: <input type="text" formControlName="email">
-         <div *ngIf="email.invalid && (email.dirty || email.touched)"> 
-            
-            <div *ngIf="email.errors.required">
-                el email del usuario es obligatorio
-            </div>
-            <div *ngIf="email.errors.pattern">
-                el email no cumple con los requisitos
-            </div>
-        </div>
-         Contraseña: <input type="password" formControlName="password">
-         <div *ngIf="password.invalid && (password.dirty || password.touched)"> 
-            <div *ngIf="password.errors.required">
-                la contraña es obligatoria
-            </div>
-            <div *ngIf="password.errors.pattern">
-               la contraseña no debe contener espacios, acentos o simbolos @ ! ? ` Ç
-            </div>
-        </div>
-        <!--Repite la contraseña: <input type="password" formControlName="compruebaPassword">-->            
-        <button type="submit" [disabled]="!formregistro.valid">Enviar</button>
-     </form>
-   </div>
-   
 </div>

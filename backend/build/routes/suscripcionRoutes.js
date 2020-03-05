@@ -9,6 +9,7 @@ class SuscripcionRoutes {
     }
     config() {
         this.router.get("/suscripciones/:idUser", suscripcionController_1.suscripcionController.get);
+        this.router.post("/suscripciones/crear", suscripcionController_1.suscripcionController.save);
     }
 }
 const suscripcionRoutes = new SuscripcionRoutes();

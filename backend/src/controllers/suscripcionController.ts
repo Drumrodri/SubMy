@@ -13,5 +13,11 @@ class SuscripcionController {
         '`usuario_id`,`periodo`,`estado`,`nombre`,`categoria` FROM suscripcion, servicio WHERE suscripcion.idServicio = servicio.id AND usuario_id=?', [req.params.idUser]);
         res.json(suscripciones);
     }
+
+    public async save(req: Request, res: Response) {
+        const suscripcion = req.body;
+        pool.query('INSERT INTO suscripcion SET ?', [suscripcion]);
+        res.json({ 'menssage': 'Suscripción insertada correctamente.' });
+    }
 }
 export const suscripcionController = new SuscripcionController;

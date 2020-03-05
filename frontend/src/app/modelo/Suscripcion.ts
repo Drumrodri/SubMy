@@ -2,7 +2,7 @@ export interface Suscripcion {
     id?: number;
     fechaAlta?: Date;
     precio?: number;
-    expira?: Date;
+    expira?: string;
     prueba?: boolean;
     idServicio?: number;
     usuario_id?: number;

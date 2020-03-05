@@ -26,5 +26,12 @@ class SuscripcionController {
             res.json(suscripciones);
         });
     }
+    save(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const suscripcion = req.body;
+            database_1.default.query('INSERT INTO suscripcion SET ?', [suscripcion]);
+            res.json({ 'menssage': 'Suscripción insertada correctamente.' });
+        });
+    }
 }
 exports.suscripcionController = new SuscripcionController;

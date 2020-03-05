@@ -29,3 +29,9 @@
     color: white;
     border-bottom: 5px solid #800080;
 }
+
+@media only screen and (max-width: 700px) {
+    .suscripcion {
+        width: 100%;
+    }
+}

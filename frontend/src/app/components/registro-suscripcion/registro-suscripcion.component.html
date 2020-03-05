@@ -3,17 +3,18 @@
     <form class="imgFondo" [formGroup]="formCrearSusc" (submit)="submit()">
         <h2 class="titulo">Crear suscripción</h2>
         <div class="formSuscripcion">
-            Servicio: <select name="servicio" id="" class="select-box" formControlName="servicio">
-                <option *ngFor="let serv of servicios" value="{{ serv.id }}">{{ serv.nombre }}</option>
+            Servicio: <select name="servicio" id="" class="select-box" formControlName="idServicio">
+                <option *ngFor="let serv of servicios" value="{{ serv.id }}" (click)="setTarifa(serv.tarifa)">{{ serv.nombre }}</option>
             </select>
             Fecha de alta: <input type="date" name="fechaAlta" class="text-box" formControlName="fechaAlta">
             Periodo: <select name="periodo" id="" class="select-box" formControlName="periodo">
                 <option value="mensual">Mensual</option>
                 <option value="anual">Anual</option>
+                <option value="trimestral">Trimestral</option>
             </select>
             Prueba gratuita: <select name="prueba" id="" class="select-box" formControlName="prueba">
-                <option value="0">Sí</option>
-                <option value="1">No</option>
+                <option value="1">Sí</option>
+                <option value="0">No</option>
             </select>
             <input type="submit" value="Crear" class="btnSubmit">
         </div>

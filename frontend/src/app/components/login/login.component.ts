@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
       this.user = user;
       console.log('usuario google');
       console.log(this.user);
-      console.log('email');
       this.loggedIn = (user != null);
       if (this.user != null) {
         this.servicioLogin.getLoginSocial(this.user.email).subscribe(
@@ -79,6 +78,31 @@ export class LoginComponent implements OnInit {
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      console.log('usuario facebook');
+      console.log(this.user);
+      this.loggedIn = (user != null);
+      if (this.user != null) {
+        this.servicioLogin.getLoginSocial(this.user.email).subscribe(
+
+          res => {
+            console.log(res);
+            localStorage.setItem('tokenSubmy', res.token); // escribe el toquen en el localStorage
+            this.router.navigate(['suscripciones']);
+          },
+          err => {
+            console.log(err);
+          }
+
+        );
+
+      }
+
+
+    });
+
   }
 
   signOut(): void {

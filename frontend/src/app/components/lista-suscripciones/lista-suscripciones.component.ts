@@ -17,11 +17,11 @@ export class ListaSuscripcionesComponent implements OnInit {
   constructor(private servicioSuscripciones: ServicioSuscripcionesService) { }
 
   ngOnInit() {
-  // prueba decodificar token
-  console.log('token decoficado');
-  var token = localStorage.getItem('tokenSubmy');
-  var tokenDecode = decode(token);
-  console.log(tokenDecode.id);
+    // prueba decodificar token
+    console.log('token decoficado');
+    const token = localStorage.getItem('tokenSubmy');
+    const tokenDecode = decode(token);
+    console.log(tokenDecode.id);
 
     this.servicioSuscripciones.getSuscripciones(tokenDecode.id).subscribe(
       res => {

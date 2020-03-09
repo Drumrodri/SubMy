@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ModeloUsuarioService} from 'src/app/services/servicio-usuario.service';
+import { ModeloUsuarioService } from 'src/app/services/servicio-usuario.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/modelo/Usuario';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   public formLogin: FormGroup;
   public formSocial: FormGroup;
   public misUsuarios: Usuario;
-// login google variables
+  // login google variables
   public user: SocialUser;
   private loggedIn: boolean;
 
@@ -26,62 +26,67 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private servicioLogin: ModeloUsuarioService, private authService: AuthService) {
 
     this.formLogin = formBuilder.group({
-      usuario:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
+      usuario: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
       pass: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+$/)]]
 
     });
 
     this.formSocial = formBuilder.group({
-      usuG:['']
+      usuG: ['']
     });
 
-    
 
-   }
+
+  }
 
   ngOnInit() {
-    if(localStorage.getItem('tokenSubmy')){
+    if (localStorage.getItem('tokenSubmy')) {
       this.router.navigate(['suscripciones']);
     }
-
-    // login google
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      console.log("usuario google");
-      console.log(user);
-      this.loggedIn = (user != null);
-
-    });
 
   }
 
   // login con redes sociales
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    // login google
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      console.log('usuario google');
+      console.log(this.user);
+      console.log('email');
+      this.loggedIn = (user != null);
+      if (this.user != null) {
+        this.servicioLogin.getLoginSocial(this.user.email).subscribe(
 
-    /*this.servicioLogin.getLoginSocial(this.formSocial.value).subscribe(
+          res => {
+            console.log(res);
+            localStorage.setItem('tokenSubmy', res.token); // escribe el toquen en el localStorage
+            this.router.navigate(['suscripciones']);
+          },
+          err => {
+            console.log(err);
+          }
 
-      res => {
-        localStorage.setItem('tokenSubmy', res.token); // escribe el toquen en el localStorage
-        this.router.navigate(['suscripciones']);
-      },
-      err => {
-        console.log(err);
+        );
+
       }
 
-    );*/
+
+    });
+
   }
- 
+
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  } 
- 
+  }
+
   signOut(): void {
     this.authService.signOut();
   }
-  
 
-  submit(){
+
+  submit() {
     console.log('formulario');
     console.log(this.formLogin.value);
     this.servicioLogin.getLogin(this.formLogin.value).subscribe(
@@ -99,12 +104,12 @@ export class LoginComponent implements OnInit {
   }
 
   // validacion
-   get usuario(){
-     return this.formLogin.get('usuario');
-   }
+  get usuario() {
+    return this.formLogin.get('usuario');
+  }
 
-   get pass(){
-     return this.formLogin.get('pass');
-   }
+  get pass() {
+    return this.formLogin.get('pass');
+  }
 
 }

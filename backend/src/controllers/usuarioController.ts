@@ -75,11 +75,13 @@ class UsuarioController {
     }
 
     public async readloginSocial(req: Request, res: Response) {
-        const usuarioSocial = {
-            usuario: req.body.usuario
-        }
+       
+        console.log(req.body);
+        const emailSocial = req.body.email;
+        
+       
 
-        const usuarios = await pool.query('SELECT * FROM usuario WHERE email=? ', [req.body.usuarioSocial])
+        const usuarios = await pool.query('SELECT * FROM usuario WHERE email=? ', [emailSocial])
         console.log(usuarios);
         if (usuarios.length == 0) {
             res.json({ message: 'error al logear' });

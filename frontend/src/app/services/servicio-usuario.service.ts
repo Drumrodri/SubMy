@@ -22,8 +22,8 @@ export class ModeloUsuarioService {
     return this.http.post('http://localhost:3000/login', usuario);
   }
 
-  getLoginSocial(usuario: Usuario): Observable<any>{
-    return this.http.post('http://localhost:3000/loginSocial', usuario)
+  getLoginSocial(email: any): Observable<any>{
+    return this.http.post('http://localhost:3000/loginSocial', {email}); // variable declarada en ts como const
   }
 
   getToken(){

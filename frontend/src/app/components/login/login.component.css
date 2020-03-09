@@ -50,6 +50,15 @@
     text-align: center;
 }
 
+.btnGoogle {
+    background: rgb(39, 39, 46);
+    border: 2px solid #800000;
+    color: white;
+    text-align: center;
+}
+
+
+
 @media only screen and (max-width: 700px) {
     .formLogin {        
         width: 80%;

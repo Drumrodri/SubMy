@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModeloUsuarioService } from 'src/app/services/servicio-usuario.service';
+import { AuthService } from "angularx-social-login";
 
 @Component({
   selector: 'app-header',
@@ -8,12 +9,14 @@ import { ModeloUsuarioService } from 'src/app/services/servicio-usuario.service'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private servicioUsuario: ModeloUsuarioService) { }
+  constructor(private servicioUsuario: ModeloUsuarioService, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   logout() {
     this.servicioUsuario.logOut();
+    // logout de google
+    this.authService.signOut(); 
   }
 }

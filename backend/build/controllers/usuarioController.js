@@ -74,5 +74,27 @@ class UsuarioController {
             }
         });
     }
+    readloginSocial(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const usuarioSocial = {
+                usuario: req.body.usuario
+            };
+            const usuarios = yield database_1.default.query('SELECT * FROM usuario WHERE email=? ', [req.body.usuarioSocial]);
+            console.log(usuarios);
+            if (usuarios.length == 0) {
+                res.json({ message: 'error al logear' });
+            }
+            else {
+                const expiresIn = 24 * 60 * 60;
+                const accessToken = jwt.sign({ id: usuarios[0].id }, SECRET_KEY, { expiresIn: expiresIn });
+                console.log("token de acceso con loguin social");
+                console.log(accessToken);
+                res.json({ token: accessToken }); //lo que enviamos el token en el response 
+                console.log('token decoficado');
+                var tokenDecode = decode(accessToken);
+                console.log(tokenDecode.id);
+            }
+        });
+    }
 }
 exports.usuarioController = new UsuarioController;

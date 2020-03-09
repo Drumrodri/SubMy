@@ -22,6 +22,10 @@ export class ModeloUsuarioService {
     return this.http.post('http://localhost:3000/login', usuario);
   }
 
+  getLoginSocial(usuario: Usuario): Observable<any>{
+    return this.http.post('http://localhost:3000/loginSocial', usuario)
+  }
+
   getToken(){
     return localStorage.getItem('tokenSubmy');
   }

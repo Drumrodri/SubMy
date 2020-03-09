@@ -12,6 +12,7 @@ class UsuarioRoutes {
         this.router.get("/usuarios/:id", usuarioController_1.usuarioController.get);
         this.router.post('/crearUser', usuarioController_1.usuarioController.create);
         this.router.post("/login", usuarioController_1.usuarioController.readlogin);
+        this.router.post("/loginSocial", usuarioController_1.usuarioController.readloginSocial);
     }
 }
 const usuarioRoutes = new UsuarioRoutes();

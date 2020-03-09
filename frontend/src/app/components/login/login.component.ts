@@ -5,6 +5,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/modelo/Usuario';
 import { Router } from '@angular/router';
 
+import { AuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,10 +16,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public formLogin: FormGroup;
+  public formSocial: FormGroup;
   public misUsuarios: Usuario;
+// login google variables
+  public user: SocialUser;
+  private loggedIn: boolean;
 
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private servicioLogin: ModeloUsuarioService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private servicioLogin: ModeloUsuarioService, private authService: AuthService) {
 
     this.formLogin = formBuilder.group({
       usuario:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
@@ -23,13 +31,55 @@ export class LoginComponent implements OnInit {
 
     });
 
+    this.formSocial = formBuilder.group({
+      usuG:['']
+    });
+
+    
+
    }
 
   ngOnInit() {
     if(localStorage.getItem('tokenSubmy')){
       this.router.navigate(['suscripciones']);
     }
+
+    // login google
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      console.log("usuario google");
+      console.log(user);
+      this.loggedIn = (user != null);
+
+    });
+
   }
+
+  // login con redes sociales
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+
+    /*this.servicioLogin.getLoginSocial(this.formSocial.value).subscribe(
+
+      res => {
+        localStorage.setItem('tokenSubmy', res.token); // escribe el toquen en el localStorage
+        this.router.navigate(['suscripciones']);
+      },
+      err => {
+        console.log(err);
+      }
+
+    );*/
+  }
+ 
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  } 
+ 
+  signOut(): void {
+    this.authService.signOut();
+  }
+  
 
   submit(){
     console.log('formulario');

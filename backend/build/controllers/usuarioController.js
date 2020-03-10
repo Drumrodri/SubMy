@@ -25,14 +25,22 @@ class UsuarioController {
     // crear los metodos crud
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body.password);
-            // aqui es donde se va a codicar la contraseña se va a modificar la const Usuario
-            const Usuario = req.body; // objeto Usuario
-            const passUsu = bcrypt.hashSync(Usuario.password); // contraseña
-            console.log(passUsu); //comprobador
-            Usuario.password = passUsu;
-            database_1.default.query('INSERT INTO usuario SET ?', [Usuario]);
-            res.json({ 'menssage': 'se ha insertado correctamente el usuairo' });
+            //comprobar que el email no existe en la base de datos
+            const email = yield database_1.default.query("SELECT * FROM usuario WHERE email = ?", [req.body.email]);
+            if (email.length == 0) {
+                console.log(req.body.password);
+                // aqui es donde se va a codicar la contraseña se va a modificar la const Usuario
+                const Usuario = req.body; // objeto Usuario
+                const passUsu = bcrypt.hashSync(Usuario.password); // contraseña
+                console.log(passUsu); //comprobador
+                Usuario.password = passUsu;
+                database_1.default.query('INSERT INTO usuario SET ?', [Usuario]);
+                res.json({ 'menssage': 'se ha insertado correctamente el usuairo' });
+            }
+            else {
+                console.log("usuario existene");
+                res.json({ 'menssage': 'ya existe un usuario con ese correo' });
+            }
         });
     }
     // update de imagen

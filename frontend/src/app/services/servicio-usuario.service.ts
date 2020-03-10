@@ -10,7 +10,7 @@ export class ModeloUsuarioService {
 
   constructor(private http: HttpClient) { } 
  // crear usuarios
-  saveUsuario(usuario: Usuario): Observable<any>{
+  saveUsuario(usuario: any): Observable<any>{
     console.log('usuario desde el servicio-usuario.service.ts');
     console.log(usuario);
     return this.http.post('http://localhost:3000/crearUser', usuario);

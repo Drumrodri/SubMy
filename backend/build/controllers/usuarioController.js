@@ -18,6 +18,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const bcryptdos = require('bcrypt');
 const SECRET_KEY = 'laSecretacionDelLogin';
+var mv = require('mv');
+const fs = require('fs');
 class UsuarioController {
     index(req, res) {
         res.json({ mensaje: "Estás en usuarios" });
@@ -25,6 +27,17 @@ class UsuarioController {
     // crear los metodos crud
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            console.log(req.files);
+            let fileName = Math.random() * Date.now() + req.files.imagen.name;
+            let ruta = 'assets/' + fileName;
+            console.log(ruta);
+            fs.writeFile('../frontend/src/' + ruta, req.files.imagen.data, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+                console.log("The file was saved!");
+            });
             //comprobar que el email no existe en la base de datos
             const email = yield database_1.default.query("SELECT * FROM usuario WHERE email = ?", [req.body.email]);
             if (email.length == 0) {
@@ -34,6 +47,7 @@ class UsuarioController {
                 const passUsu = bcrypt.hashSync(Usuario.password); // contraseña
                 console.log(passUsu); //comprobador
                 Usuario.password = passUsu;
+                Usuario.imagen = ruta;
                 database_1.default.query('INSERT INTO usuario SET ?', [Usuario]);
                 res.json({ 'menssage': 'se ha insertado correctamente el usuairo' });
             }

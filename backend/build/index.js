@@ -10,10 +10,12 @@ const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const suscripcionRoutes_1 = __importDefault(require("./routes/suscripcionRoutes"));
 const usuarioRoutes_1 = __importDefault(require("./routes/usuarioRoutes"));
 const servicioRoutes_1 = __importDefault(require("./routes/servicioRoutes"));
+const fileUpload = require('express-fileupload');
 /* Creamos la clase server para el servidor de datos */
 class Server {
     constructor() {
         this.app = express_1.default();
+        this.app.use(fileUpload());
         this.config();
         this.routes();
     }

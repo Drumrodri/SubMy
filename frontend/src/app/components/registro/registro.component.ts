@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModeloUsuarioService } from 'src/app/services/servicio-usuario.service';
 import {Router} from '@angular/router';
-
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/modelo/Usuario';
 
@@ -29,7 +27,6 @@ export class RegistroComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
       password: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+$/)]],
      // repitepassword: ['', [Validators.required]] // revisar
-
     });
 
   }
@@ -41,15 +38,23 @@ export class RegistroComponent implements OnInit {
 
   }
 
-  OperadorImgaen(event: any): void{
-    this.imagen = event.target.files[0];
-    console.log('imagen: ', this.imagen);
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      this.imagen = event.target.files[0];
+      console.log(this.imagen);
+    }
   }
 
-  submit() {
-    console.log('usuario creado');
-    console.log(this.formregistro);
-    this.mimodeloUsuario.saveUsuario(this.formregistro.value).subscribe(
+  submit() {  
+    const formData = new FormData();
+    formData.append('imagen', this.imagen);
+    formData.append('nombre', this.formregistro.get('nombre').value);
+    formData.append('nick', this.formregistro.get('nick').value);
+    formData.append('apellidos', this.formregistro.get('apellidos').value);
+    formData.append('password', this.formregistro.get('password').value);
+    formData.append('email', this.formregistro.get('email').value);
+
+    this.mimodeloUsuario.saveUsuario(formData).subscribe(
       res => {
         console.log('res de registro.comopontents');
         console.log(res);
@@ -60,10 +65,7 @@ export class RegistroComponent implements OnInit {
         console.log('err de registro.comopontents');
         console.log(err);
       }
-
-
     );
-
   }
   // validadcion
   get nick(){

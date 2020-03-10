@@ -5,6 +5,7 @@ import indexRoutes from './routes/indexRoutes';
 import suscripcionRoutes from './routes/suscripcionRoutes';
 import usuariosRoutes from './routes/usuarioRoutes';
 import servicioRoutes from './routes/servicioRoutes';
+const fileUpload = require('express-fileupload');
 
 /* Creamos la clase server para el servidor de datos */
 class Server {
@@ -13,6 +14,7 @@ class Server {
 
     constructor() {
         this.app = express();
+        this.app.use(fileUpload());
         this.config();
         this.routes();
     }

@@ -24,7 +24,7 @@ export class RegistroComponent implements OnInit {
       nombre: ['', [Validators.required]],
       apellidos: ['', [Validators.required]],
       imagen: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
+      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-ñÑ]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
       password: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+$/)]],
      // repitepassword: ['', [Validators.required]] // revisar
     });

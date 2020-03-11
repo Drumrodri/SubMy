@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private servicioLogin: ModeloUsuarioService, private authService: AuthService) {
 
     this.formLogin = formBuilder.group({
-      usuario: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
+      usuario: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-ñÑ]+@[a-zA-Z0-9-]+\.([a-zA-Z]{2,4})+$/)]],
       pass: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9_.+-]+$/)]]
 
     });

@@ -18,7 +18,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const bcryptdos = require('bcrypt');
 const SECRET_KEY = 'laSecretacionDelLogin';
-var mv = require('mv');
 const fs = require('fs');
 class UsuarioController {
     index(req, res) {

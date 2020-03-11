@@ -11,6 +11,7 @@ import * as decode from 'jwt-decode';
 export class PerfilComponent implements OnInit {
 
   public user: Usuario;
+  public imagen: string;
 
   constructor(private servicioUsuario: ModeloUsuarioService) { }
 
@@ -22,6 +23,7 @@ export class PerfilComponent implements OnInit {
     this.servicioUsuario.getUsuario(tokenDecode.id).subscribe(
       res => {
         this.user = res;
+        this.imagen = res[0].imagen;
         console.log(res);
       },
       err => {

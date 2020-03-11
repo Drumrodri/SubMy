@@ -13,10 +13,10 @@
                 Nick: <input type="text" formControlName="nick" class="text-box">
     
                 <div *ngIf="nick.invalid && (nick.dirty || nick.touched)"> 
-                    <div *ngIf="nick.errors.required">
+                    <div *ngIf="nick.errors.required" class="error">
                         El nick del usuario es obligatorio.
                     </div>
-                    <div *ngIf="nick.errors.pattern">
+                    <div *ngIf="nick.errors.pattern" class="error">
                         El nick no debe contener espacios, acentos o símbolos @ ! ? ` Ç.
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                 Nombre: <input type="text" formControlName="nombre" class="text-box">
     
                 <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"> 
-                    <div *ngIf="nombre.errors.required">
+                    <div *ngIf="nombre.errors.required" class="error">
                         El nombre del usuario es obligatorio.
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                 Apellidos: <input type="text" formControlName="apellidos" class="text-box">
     
                 <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)">            
-                    <div *ngIf="apellidos.errors.required">
+                    <div *ngIf="apellidos.errors.required" class="error">
                         Al menos un apellido es obligatorio.
                     </div>
                 </div>
@@ -40,10 +40,10 @@
                 Email: <input type="text" formControlName="email" class="text-box">
     
                 <div *ngIf="email.invalid && (email.dirty || email.touched)">             
-                    <div *ngIf="email.errors.required">
+                    <div *ngIf="email.errors.required" class="error">
                         El email del usuario es obligatorio.
                     </div>
-                    <div *ngIf="email.errors.pattern">
+                    <div *ngIf="email.errors.pattern" class="error">
                         El email no cumple con los requisitos.
                     </div>
                 </div>
@@ -51,10 +51,10 @@
                 Contraseña: <input type="password" formControlName="password" class="text-box">
     
                 <div *ngIf="password.invalid && (password.dirty || password.touched)"> 
-                    <div *ngIf="password.errors.required">
+                    <div *ngIf="password.errors.required" class="error">
                         La contraña es obligatoria.
                     </div>
-                    <div *ngIf="password.errors.pattern">
+                    <div *ngIf="password.errors.pattern" class="error">
                     La contraseña no debe contener espacios, acentos o símbolos @ ! ? ` Ç.
                     </div>
                 </div>

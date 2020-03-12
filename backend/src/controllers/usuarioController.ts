@@ -64,7 +64,7 @@ class UsuarioController {
             pass: req.body.pass
         }
 
-        const usuarios = await pool.query('SELECT * FROM usuario WHERE email=? ', [req.body.usuario])
+        const usuarios = await pool.query('SELECT * FROM usuario WHERE email=? ', [req.body.usuario]);
         console.log(usuarios[0].password); // comprobador
         if (usuarios.length == 0) {
             res.json({ message: 'error al logear' });

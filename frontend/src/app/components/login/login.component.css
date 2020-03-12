@@ -50,6 +50,15 @@
     text-align: center;
 }
 
+.social{
+    display: flex;
+    padding: 20px;
+    height: 20%;
+    flex-direction: column;
+    justify-content: space-around;
+   
+}
+
 .btnGoogle {
     background: rgb(39, 39, 46);
     border: 2px solid #800000;

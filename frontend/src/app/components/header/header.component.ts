@@ -16,7 +16,5 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.servicioUsuario.logOut();
-    // logout de google
-    this.authService.signOut(); 
   }
 }

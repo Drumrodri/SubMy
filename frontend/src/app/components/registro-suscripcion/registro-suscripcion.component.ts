@@ -41,6 +41,7 @@ export class RegistroSuscripcionComponent implements OnInit {
     this.servicioSuscripciones.saveSuscripcion(this.formCrearSusc.value, expira, this.tarifa).subscribe(
       res => {
         console.log(res);
+        location.href = ('suscripciones');
       },
       err => {
         console.log(err);

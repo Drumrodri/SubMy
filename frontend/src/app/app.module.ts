@@ -19,6 +19,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+import { PacoComponent } from './components/paco/paco.component';
 
 
 let config = new AuthServiceConfig([
@@ -45,7 +46,8 @@ export function provideConfig() {
     ListaSuscripcionesComponent,
     FooterComponent,
     RegistroSuscripcionComponent,
-    PerfilComponent
+    PerfilComponent,
+    PacoComponent
   ],
   imports: [
     BrowserModule,
